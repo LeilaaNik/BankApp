@@ -15,4 +15,11 @@ public class AccountTest {
         Account account = new Account("123");
         assertEquals(0.0, account.getBalance(), 0.01);
     }
+
+    @Test
+    public void testDeposit() {
+        Account account = new Account("123");
+        account.deposit(100.0);
+        assertEquals(100.0, account.getBalance(), 0.01);
+    }
 }
