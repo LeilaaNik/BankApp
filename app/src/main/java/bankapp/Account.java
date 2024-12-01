@@ -50,10 +50,8 @@ public class Account {
      * @param amount the amount to withdraw
      */
     public void withdraw(double amount) {
-        if (amount > 0 && balance >= amount) {
+        if (amount > 0) {
             balance -= amount;
-        } else {
-            throw new IllegalArgumentException("Invalid withdraw amount");
         }
     }
 }
