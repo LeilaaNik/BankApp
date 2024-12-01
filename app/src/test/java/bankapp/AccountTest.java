@@ -30,4 +30,16 @@ public class AccountTest {
         account.withdraw(50.0);
         assertEquals(50.0, account.getBalance(), 0.01);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testWithdrawInvalidAmount() {
+        Account account = new Account("123");
+        account.withdraw(-10.0); // Negative amount should throw exception
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testWithdrawInsufficientFunds() {
+        Account account = new Account("123");
+        account.withdraw(10.0); // Withdrawing more than balance should throw exception
+    }
 }
