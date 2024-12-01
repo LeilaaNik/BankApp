@@ -43,4 +43,15 @@ public class Account {
     public void deposit(double amount) {
         balance += amount;
     }
+
+    /**
+     * Withdraws the specified amount from the account.
+     *
+     * @param amount the amount to withdraw
+     */
+    public void withdraw(double amount) {
+        if (amount > 0) {
+            balance -= amount;
+        }
+    }
 }
