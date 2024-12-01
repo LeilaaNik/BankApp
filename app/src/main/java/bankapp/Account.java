@@ -34,4 +34,13 @@ public class Account {
     public double getBalance() {
         return balance;
     }
+
+    /**
+     * Deposits the specified amount into the account.
+     *
+     * @param amount the amount to deposit
+     */
+    public void deposit(double amount) {
+        balance += amount;
+    }
 }
