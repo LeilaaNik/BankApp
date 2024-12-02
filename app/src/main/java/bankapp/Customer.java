@@ -28,4 +28,22 @@ public class Customer {
     public String getCustomerId() {
         return customerId;
     }
+
+    /**
+     * Adds an account to the customer.
+     *
+     * @param account the account to add
+     */
+    public void addAccount(Account account) {
+        accounts.add(account);
+    }
+
+    /**
+     * Returns the list of accounts.
+     *
+     * @return the list of accounts
+     */
+    public List<Account> getAccounts() {
+        return accounts;
+    }
 }
