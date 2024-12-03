@@ -5,6 +5,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import java.util.Arrays;
+
 public class BankTest {
     private Bank bank;
     private Customer customer;
@@ -14,12 +16,16 @@ public class BankTest {
     @Before
     public void setUp() {
         bank = new Bank();
-        customer = new Customer("cust1");
-        account1 = new Account("acc1");
-        account2 = new Account("acc2");
-        customer.addAccount(account1);
-        customer.addAccount(account2);
+        customer = mock(Customer.class);
+        account1 = mock(Account.class);
+        account2 = mock(Account.class);
+
+        when(customer.getCustomerId()).thenReturn("cust1");
+        when(account1.getAccountId()).thenReturn("acc1");
+        when(account2.getAccountId()).thenReturn("acc2");
+
         bank.addCustomer(customer);
+        when(customer.getAccounts()).thenReturn(Arrays.asList(account1, account2));
     }
 
     @Test
@@ -31,9 +37,9 @@ public class BankTest {
 
     @Test
     public void testTransfer() {
-        account1.deposit(100.0);
-        bank.transfer("acc1", "acc2", 50.0);
-        assertEquals(50.0, account1.getBalance(), 0.01);
-        assertEquals(50.0, account2.getBalance(), 0.01);
+        when(account1.getBalance()).thenReturn(100.0);
+        bank.transfer(account1, account2, 50.0);
+        verify(account1).withdraw(50.0);
+        verify(account2).deposit(50.0);
     }
 }
