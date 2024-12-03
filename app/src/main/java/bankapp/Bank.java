@@ -38,20 +38,12 @@ public class Bank {
     /**
      * Transfers money between accounts.
      *
-     * @param fromAccountId the ID of the account to transfer from
-     * @param toAccountId the ID of the account to transfer to
+     * @param fromAccount the account to transfer from
+     * @param toAccount the account to transfer to
      * @param amount the amount to transfer
      */
-    public void transfer(String fromAccountId, String toAccountId, double amount) {
-        for (Customer customer : customers.values()) {
-            for (Account account : customer.getAccounts()) {
-                if (account.getAccountId().equals(fromAccountId)) {
-                    account.withdraw(amount);
-                }
-                if (account.getAccountId().equals(toAccountId)) {
-                    account.deposit(amount);
-                }
-            }
-        }
+    public void transfer(Account fromAccount, Account toAccount, double amount) {
+        fromAccount.withdraw(amount);
+        toAccount.deposit(amount);
     }
 }
