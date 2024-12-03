@@ -34,4 +34,24 @@ public class Bank {
     public Customer getCustomer(String customerId) {
         return customers.get(customerId);
     }
+
+    /**
+     * Transfers money between accounts.
+     *
+     * @param fromAccountId the ID of the account to transfer from
+     * @param toAccountId the ID of the account to transfer to
+     * @param amount the amount to transfer
+     */
+    public void transfer(String fromAccountId, String toAccountId, double amount) {
+        for (Customer customer : customers.values()) {
+            for (Account account : customer.getAccounts()) {
+                if (account.getAccountId().equals(fromAccountId)) {
+                    account.withdraw(amount);
+                }
+                if (account.getAccountId().equals(toAccountId)) {
+                    account.deposit(amount);
+                }
+            }
+        }
+    }
 }
