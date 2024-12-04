@@ -5,6 +5,7 @@ package bankapp;
  */
 public class Transaction {
     private String transactionId;
+    private String fromAccountId;
 
     /**
      * Constructs a Transaction with the specified details.
@@ -16,6 +17,7 @@ public class Transaction {
      */
     public Transaction(String transactionId, String fromAccountId, String toAccountId, double amount) {
         this.transactionId = transactionId;
+        this.fromAccountId = fromAccountId;
     }
 
     /**
@@ -25,5 +27,14 @@ public class Transaction {
      */
     public String getTransactionId() {
         return transactionId;
+    }
+
+    /**
+     * Returns the ID of the account to transfer from.
+     *
+     * @return the from account ID
+     */
+    public String getFromAccountId() {
+        return fromAccountId;
     }
 }
