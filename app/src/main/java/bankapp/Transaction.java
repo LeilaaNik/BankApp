@@ -7,6 +7,7 @@ public class Transaction {
     private String transactionId;
     private String fromAccountId;
     private String toAccountId;
+    private double amount;
 
     /**
      * Constructs a Transaction with the specified details.
@@ -20,6 +21,7 @@ public class Transaction {
         this.transactionId = transactionId;
         this.fromAccountId = fromAccountId;
         this.toAccountId = toAccountId;
+        this.amount = amount;
     }
 
     /**
@@ -47,5 +49,14 @@ public class Transaction {
      */
     public String getToAccountId() {
         return toAccountId;
+    }
+
+    /**
+     * Returns the amount to transfer.
+     *
+     * @return the amount
+     */
+    public double getAmount() {
+        return amount;
     }
 }
