@@ -21,4 +21,10 @@ public class TransactionTest {
         Transaction transaction = new Transaction("txn1", "acc1", "acc2", 0.0);
         assertEquals("acc2", transaction.getToAccountId());
     }
+
+    @Test
+    public void testAmount() {
+        Transaction transaction = new Transaction("txn1", "acc1", "acc2", 100.0);
+        assertEquals(100.0, transaction.getAmount(), 0.01);
+    }
 }
