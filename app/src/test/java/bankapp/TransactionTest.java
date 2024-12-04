@@ -15,4 +15,10 @@ public class TransactionTest {
         Transaction transaction = new Transaction("txn1", "acc1", null, 0.0);
         assertEquals("acc1", transaction.getFromAccountId());
     }
+
+    @Test
+    public void testToAccountId() {
+        Transaction transaction = new Transaction("txn1", "acc1", "acc2", 0.0);
+        assertEquals("acc2", transaction.getToAccountId());
+    }
 }
