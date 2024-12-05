@@ -37,4 +37,13 @@ public class AppTest {
         app.viewTransactions();
         verify(transactionService).getAllTransactions();
     }
+
+    @Test
+    public void testStart() {
+        String input = "1\ncust1\n3\n";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        app.start();
+        verify(bank).addCustomer(any(Customer.class));
+    }
 }
