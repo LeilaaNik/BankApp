@@ -11,6 +11,28 @@ public class App {
         this.transactionService = transactionService;
     }
 
+    public void start() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("1. Add Customer");
+            System.out.println("2. View Transactions");
+            System.out.println("3. Exit");
+            int choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    addCustomer(scanner);
+                    break;
+                case 2:
+                    viewTransactions();
+                    break;
+                case 3:
+                    return;
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }
+    }
+
     public void addCustomer(Scanner scanner) {
         System.out.println("Enter customer ID:");
         String customerId = scanner.next();
