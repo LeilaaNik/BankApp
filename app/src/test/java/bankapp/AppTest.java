@@ -2,6 +2,8 @@ package bankapp;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 import java.io.ByteArrayInputStream;
@@ -28,5 +30,11 @@ public class AppTest {
         Scanner scanner = new Scanner(System.in);
         app.addCustomer(scanner);
         verify(bank).addCustomer(any(Customer.class));
+    }
+
+    @Test
+    public void testViewTransactions() {
+        app.viewTransactions();
+        verify(transactionService).getAllTransactions();
     }
 }
