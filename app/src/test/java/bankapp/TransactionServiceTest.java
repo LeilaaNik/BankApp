@@ -5,6 +5,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class TransactionServiceTest {
     private TransactionService transactionService;
     private TransactionRepository transactionRepository;
@@ -28,5 +31,15 @@ public class TransactionServiceTest {
         when(transactionRepository.findById("txn1")).thenReturn(transaction);
         Transaction result = transactionService.getTransactionById("txn1");
         assertEquals(transaction, result);
+    }
+
+    @Test
+    public void testGetAllTransactions() {
+        Transaction transaction1 = new Transaction("txn1", "acc1", "acc2", 100.0);
+        Transaction transaction2 = new Transaction("txn2", "acc3", "acc4", 200.0);
+        List<Transaction> transactions = Arrays.asList(transaction1, transaction2);
+        when(transactionRepository.findAll()).thenReturn(transactions);
+        List<Transaction> result = transactionService.getAllTransactions();
+        assertEquals(transactions, result);
     }
 }
