@@ -18,4 +18,13 @@ public class App {
         bank.addCustomer(customer);
         System.out.println("Customer added");
     }
+
+    public void viewTransactions() {
+        for (Transaction transaction : transactionService.getAllTransactions()) {
+            System.out.println("Transaction ID: " + transaction.getTransactionId() +
+                    ", From Account: " + transaction.getFromAccountId() +
+                    ", To Account: " + transaction.getToAccountId() +
+                    ", Amount: " + transaction.getAmount());
+        }
+    }
 }
