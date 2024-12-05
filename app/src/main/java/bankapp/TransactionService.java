@@ -1,5 +1,7 @@
 package bankapp;
 
+import java.util.List;
+
 /**
  * Service class for managing transactions.
  */
@@ -32,5 +34,14 @@ public class TransactionService {
      */
     public Transaction getTransactionById(String transactionId) {
         return transactionRepository.findById(transactionId);
+    }
+
+    /**
+     * Retrieves all transactions.
+     *
+     * @return a list of all transactions
+     */
+    public List<Transaction> getAllTransactions() {
+        return transactionRepository.findAll();
     }
 }
