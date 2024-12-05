@@ -21,4 +21,12 @@ public class TransactionServiceTest {
         transactionService.addTransaction(transaction);
         verify(transactionRepository).save(transaction);
     }
+
+    @Test
+    public void testGetTransactionById() {
+        Transaction transaction = new Transaction("txn1", "acc1", "acc2", 100.0);
+        when(transactionRepository.findById("txn1")).thenReturn(transaction);
+        Transaction result = transactionService.getTransactionById("txn1");
+        assertEquals(transaction, result);
+    }
 }
