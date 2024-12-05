@@ -23,4 +23,14 @@ public class TransactionService {
     public void addTransaction(Transaction transaction) {
         transactionRepository.save(transaction);
     }
+
+    /**
+     * Retrieves a transaction by its ID.
+     *
+     * @param transactionId the transaction ID
+     * @return the transaction with the specified ID
+     */
+    public Transaction getTransactionById(String transactionId) {
+        return transactionRepository.findById(transactionId);
+    }
 }
