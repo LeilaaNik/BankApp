@@ -46,11 +46,15 @@ public class AppTest {
 
     @Test
     public void testStart() {
-        String input = "1\ncust1\n2\n3\n";
+        String input = "1\ncust1\n3\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         app.start();
         verify(bank).addCustomer(any(Customer.class));
+        input = "2\n3\n";
+        in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        app.start();
         verify(transactionService).getAllTransactions();
         input = "4\n3\n";
         in = new ByteArrayInputStream(input.getBytes());
@@ -58,4 +62,5 @@ public class AppTest {
         app.start();
         verifyNoMoreInteractions(bank, transactionService);
     }
+
 }
