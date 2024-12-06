@@ -8,6 +8,8 @@ import static org.mockito.Mockito.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class AppTest {
@@ -34,6 +36,10 @@ public class AppTest {
 
     @Test
     public void testViewTransactions() {
+        Transaction transaction1 = new Transaction("txn1", "acc1", "acc2", 100.0);
+        Transaction transaction2 = new Transaction("txn2", "acc3", "acc4", 200.0);
+        List<Transaction> transactions = Arrays.asList(transaction1, transaction2);
+        when(transactionService.getAllTransactions()).thenReturn(transactions);
         app.viewTransactions();
         verify(transactionService).getAllTransactions();
     }
