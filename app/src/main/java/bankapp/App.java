@@ -1,9 +1,5 @@
 package bankapp;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -67,33 +63,5 @@ public class App {
                     ", To Account: " + transaction.getToAccountId() +
                     ", Amount: " + transaction.getAmount());
         }
-    }
-
-    /**
-     * The main method to run the application.
-     */
-    public static void main(String[] args) {
-        Bank bank = new Bank();
-        TransactionRepository transactionRepository = new TransactionRepository() {
-            private Map<String, Transaction> transactions = new HashMap<>();
-
-            @Override
-            public void save(Transaction transaction) {
-                transactions.put(transaction.getTransactionId(), transaction);
-            }
-
-            @Override
-            public Transaction findById(String transactionId) {
-                return transactions.get(transactionId);
-            }
-
-            @Override
-            public List<Transaction> findAll() {
-                return new ArrayList<>(transactions.values());
-            }
-        };
-        TransactionService transactionService = new TransactionService(transactionRepository);
-        App app = new App(bank, transactionService);
-        app.start();
     }
 }
